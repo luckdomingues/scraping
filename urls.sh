@@ -8,7 +8,23 @@
 
 function PrintUsage() {
     echo "Uso: `basename $0` <URL>"
+    echo "Exemplo: ./urls www.cio.com.br"
     exit 1
+}
+
+function banner(){
+    clear
+    echo -e "
+\033[1m
+ ----------------------------------------------------------- 
+#                    INICIANDO WEB SCRAPIN                  #
+ -----------------------------------------------------------\033[0m
+  
+  Varrendo URL: $1
+    
+ -----------------------------------------------------------
+ "
+
 }
 
 function CapturaHTML() {
@@ -41,19 +57,23 @@ function ResolveURL() {
     fi
     done
 }
+
 ## == fim das Funcoes
 
-### SCRIPT INICIA AQUI CHAMANDO AS FUNCOES
 
+### SCRIPT INICIA AQUI CHAMANDO AS FUNCOES
 if [ "$1" = "" ]
 then
     PrintUsage
 fi
 
+banner $1
 CapturaHTML $1
 FiltraLinksExternos
 ResolveURL
 # apaga arquivo temporario
 rm tmp1.$$
+echo " "
+echo "--------------------------** FIM **------------------------"
 
 exit 0
