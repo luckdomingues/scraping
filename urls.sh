@@ -2,6 +2,8 @@
 
 ##
 ## script para LAB 03
+## Autor: Luciano Domingues
+## set.2019
 ##
 
 function PrintUsage() {
